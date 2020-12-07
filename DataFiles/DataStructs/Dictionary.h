@@ -50,6 +50,8 @@ public:
 	void saveEntry(string fileID);
 	void constructDict(string fileID);
 	void refreshDict();
+	string hashEntry(string text);	//hashes the value to store in the dictionary
+
 
 };
 #endif
