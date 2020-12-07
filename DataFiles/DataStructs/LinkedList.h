@@ -84,4 +84,88 @@ LinkedList<T>::~LinkedList()
 	head = nullptr;
 	tail = nullptr;
 }
+
+template <class T>
+void LinkedList<T>::push(T item)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::append(T item)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::del(T item)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::delHead()
+{
+
+}
+
+template <class T>
+void LinkedList<T>::delTail()
+{
+
+}
+
+template <class T>
+bool LinkedList<T>::search(T value)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::peekFront(T& value)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::peekEnd(T& value)
+{
+
+}
+
+template <class T>
+void LinkedList<T>::display()
+{
+
+}
+
+template <class T>
+bool LinkedList<T>::full()
+{
+
+}
+
+template <class T>
+bool LinkedList<T>::empty()
+{
+
+}
+
+template <class T>
+int LinkedList<T>::size()
+{
+
+}
+
+template <class T>
+void LinkedList<T>::clearAll()
+{
+
+}
+
+template <class T>
+void LinkedList<T>::operator = (const LinkedList& list)
+{
+
+}
 #endif
