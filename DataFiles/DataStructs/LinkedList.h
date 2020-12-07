@@ -20,7 +20,7 @@ private:
 	int currentCount;
 
 public:
-	LinkedList(int maximum = -1);
+	LinkedList(int max = -1);
 	LinkedList(const LinkedList& list);		//deep copy constructor
 	~LinkedList();							//destructor
 
@@ -40,4 +40,48 @@ public:
 	void clearAll();							//deletes all items in the list
 	void operator = (const LinkedList& list);	//operator overload for deep copy
 };
+
+template <class T>
+LinkedList<T>::LinkedList(int max)
+{
+	head = nullptr;
+	tail = nullptr;
+	maximum = max;
+	currentCount = 0;
+}
+
+template <class T>
+LinkedList<T>::LinkedList(const LinkedList& list)
+{
+	head = nullptr;
+	tail = nullptr;
+	maximum = list.maximum;
+	currentCount = 0;
+
+	Node<T>* nodePtr = list.head;
+	while (nodePtr != nullptr)
+	{
+		append(nodePtr->value);
+		nodePtr = nodePtr->next;
+	}
+}
+
+template <class T>
+LinkedList<T>::~LinkedList()
+{
+	Node<T>* nodePtr = head;
+	Node<T>* delNode = nullptr;
+
+	while (nodePtr != nullptr)
+	{
+		delNode = nodePtr;
+		nodePtr = nodePtr->next;
+		delete delNode;
+	}
+
+	delNode = nullptr;
+
+	head = nullptr;
+	tail = nullptr;
+}
 #endif
