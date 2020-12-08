@@ -16,7 +16,7 @@ private:
 	bool accountStatus;
 
 public:
-	AccountVersion(string accountType, double monthlyFee, double serFee, double nsfFee, double interest, double bal, bool actStatus);
+	AccountVersion(string acntType, double monthlyFee, double serFee, double nsfFee, double interest, double bal, bool acntStatus);
 	//setters
 	void setMonthFee(double fee);
 	void setServiceFee(double fee);
@@ -24,7 +24,7 @@ public:
 	void setIntRate(double rate);
 	void setMinimum(double amount);				//minimum balance of the account
 	void setStatus(bool goodBad);				//accounts will have good or bad status
-	void setType(string actType);				//sets the type of account - checking, saving, CD
+	void setType(string acntType);				//sets the type of account - checking, saving, CD
 	//getters
 	double getMonthFee();
 	double getServiceFee();
@@ -74,7 +74,7 @@ private:
 
 public:
 	//new account constructor
-	Account(string acctType, string newHolderID, string newFirstName, string newLastName, string newPhone, string newAddress, time_t startTime, double newBalance);
+	Account(string acntType, string newHolderID, string newFirstName, string newLastName, string newPhone, string newAddress, time_t startTime, double newBalance);
 	//exisiting account constructor
 	Account(string acntID);
 	//setters
