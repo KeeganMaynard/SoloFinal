@@ -114,7 +114,5 @@ public:
 	time_t convertToTime(string day);						//converts a string to time
 	string saveData();										//saves account information to the appropriate file
 	void constructAccount(string acntID);					//builds the account from a file
-
-
 };
 #endif
