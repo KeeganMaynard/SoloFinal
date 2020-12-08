@@ -29,6 +29,7 @@ string Encryption::encryption(string line)
 		char asciiValue = ascii;
 		toEncrypt += asciiValue;
 	}
+
 	return toEncrypt;
 }
 
@@ -43,6 +44,7 @@ string Encryption::decryption(string line)
 		char asciiValue = ascii;
 		toDecrypt += asciiValue;
 	}
+
 	return toDecrypt;
 }
 
@@ -50,6 +52,7 @@ string Encryption::hasher(string input)
 {
 	long long hashConvert = FNV1a(input);
 	string hexConvert = hex(hashConvert);
+
 	return hexConvert;
 }
 
@@ -58,11 +61,13 @@ string Encryption::hexer(long long input)
 	stringstream streamValue;
 	streamValue << hex << input;
 	string hexValue = streamValue.str();
+
 	return hexValue;
 }
 
 int Encryption::index(string input, int size)
 {
 	long long hashedInput = FNV1a(input);
+
 	return (hashedInput % size);
 }
