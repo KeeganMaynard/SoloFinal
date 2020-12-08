@@ -19,7 +19,7 @@ public:
 	void setActiveOfficial(Official& official);
 	void setInactiveOfficial(Official& official);
 
-	//systemAdmin for admins
+	//systemAdmin functions for admins
 	void createSystemAdmin(string name, string ID, string password);
 	void delSystemAdmin(string ID);
 
