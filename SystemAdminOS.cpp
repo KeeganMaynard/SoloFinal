@@ -13,6 +13,7 @@ void memberAssistance(systemAdmin& admin);
 
 
 bool run = true;
+int option;
 
 void systemAdminLogin(string userID)
 {
@@ -35,7 +36,7 @@ void systemAdminLogin(string userID)
 		}
 		else
 		{
-			int option = stoi(input);
+			option = stoi(input);
 		}
 
 		switch (option)
@@ -115,6 +116,7 @@ void configSystemAdmin(systemAdmin& admin)
 void cofigOfficial(systemAdmin& admin)
 {
 	string input;
+	int option;
 	cout << "[1] Create New Bank official\n[2] Delete Existing Bank Offical\n[3] Set Status for Bank Official\n[4] Exit" << endl;
 	getline(cin, input);
 	if (input.length() > 1)
@@ -123,7 +125,7 @@ void cofigOfficial(systemAdmin& admin)
 	}
 	else
 	{
-		int option = stoi(input);
+		option = stoi(input);
 	}
 
 	switch (option)
