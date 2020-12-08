@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <Windows.h>
 using namespace std;
 
 class Time
