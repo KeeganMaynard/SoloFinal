@@ -61,7 +61,7 @@ string Encryption::hexer(long long input)
 	return hexValue;
 }
 
-int Entryption::index(string input, int size)
+int Encryption::index(string input, int size)
 {
 	long long hashedInput = FNV1a(input);
 	return (hashedInput % size);
