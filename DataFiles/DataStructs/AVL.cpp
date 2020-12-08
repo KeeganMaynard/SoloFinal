@@ -29,7 +29,15 @@ int AVLtree<T>::leafs(Node<T>* subRoot)
 template <class T>
 void AVLtree<T>::midpoints(vector<Node<T>*>& list, int front, int end)
 {
+	if (end - front >= 0)    //stop finding midpoints
+	{
+		int midpoint = front + ((end - front) / 2);
+		root = insertAssist(root, list[midpoint]);
+		count++;
 
+		midpoints(list, front, midpoint - 1);
+		midpoints(list, midpoint + 1, end);
+	}
 }
 
 template <class T>
