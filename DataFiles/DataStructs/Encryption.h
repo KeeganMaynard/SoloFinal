@@ -24,7 +24,7 @@ public:
 	string encryption(string line);
 	string decryption(string line);
 	string hasher(string input);
-	string hex(long long Input);
+	string hexer(long long Input);
 	int index(string input, int size);
 };
 
