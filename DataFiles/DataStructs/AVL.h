@@ -15,7 +15,7 @@ class AVLtree
 {
 private:
 	Node<T>* root;
-	int count;
+	int count;				//tracks the number of nodes in the tree
 	int itemCount;
 
 protected:
