@@ -9,7 +9,8 @@ using namespace std;
 class Encryption
 {
 private:
-	vector<int> key;		//used to decrypt and encrypt
+	static string locker;
+	static vector<int> scrambler;		//used to decrypt and encrypt
 public:
 	Encryption();
 	
