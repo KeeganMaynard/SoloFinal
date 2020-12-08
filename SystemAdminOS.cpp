@@ -12,7 +12,7 @@ void memberAssistance(systemAdmin& admin);
 
 
 
-bool run = true;
+bool loop = true;
 int option;
 
 void systemAdminLogin(string userID)
@@ -23,7 +23,7 @@ void systemAdminLogin(string userID)
 	cout << "Recent account activity: " << admin.getHistory() << endl;
 	admin.setHistory(Time().timeNow());
 
-	while (run)
+	while (loop)
 	{
 		string input = "";
 		cout << "[1] Configure System Admin Accounts\n[2] Configure Bank Official Accounts\n[3] Member Assistance\n[4] Return to Login";
@@ -54,18 +54,18 @@ void systemAdminLogin(string userID)
 		case 3:
 		{
 			memberAssistance(admin);
-			break
+			break;
 		}
 		case 4:
 		{
-			run = false;
+			loop = false;
 			admin.storeUserInfo();
 			break;
 		}
 		default:
 		{
 			cout << "Error: invalid input.\nPlease try again." << endl;
-			break
+			break;
 		}
 		}
 	}
