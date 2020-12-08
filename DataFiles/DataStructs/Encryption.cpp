@@ -27,7 +27,7 @@ string Encryption::encryption(string line)
 		int ascii = line[i] + 129 + scrambler[position % scrambler.size()];		//adding 129 will give valid ascii value, scrambler offsets the value
 		postition++;
 		char asciiValue = ascii;
-		toEncrypt = asciiValue;
+		toEncrypt += asciiValue;
 	}
 	return toEncrypt;
 }
@@ -35,4 +35,34 @@ string Encryption::encryption(string line)
 string Encryption::decryption(string line)
 {
 	string toDecrypt = "";
+
+	for (int i = 0; i < line.length(); i++)
+	{
+		int ascii = line[i] - 129 - scrambler[position % scrambler.size()];		//does the opposite of encryption
+		position++;
+		char asciiValue = ascii;
+		toDecrypt += asciiValue;
+	}
+	return toDecrypt;
+}
+
+string Encryption::hasher(string input)
+{
+	long long hashConvert = FNV1a(input);
+	string hexConvert = hex(hashConvert);
+	return hexConvert;
+}
+
+string Encryption::hexer(long long input)
+{
+	stringstream streamValue;
+	streamValue << hex << input;
+	string hexValue = streamValue.str();
+	return hexValue;
+}
+
+int Entryption::index(string input, int size)
+{
+	long long hashedInput = FNV1a(input);
+	return (hashedInput % size);
 }
