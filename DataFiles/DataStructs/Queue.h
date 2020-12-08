@@ -10,9 +10,8 @@ class Queue
 {
 private:
 	LinkedList<string> list;
-	int maximum
 public:
-	Queue(int max = -1);					//chech why this is not working correctly
+	Queue(int max = -1);					
 	void enqueue(string value);
 	void dequeue(string& value);
 	bool isEmpty();							//not empty() becasue LinkedList.h has empty function name
@@ -26,8 +25,8 @@ public:
 
 Queue::Queue(int max)
 {
-	maximum = max;
-	list = LinkedList<string>(maximum);
+	max = (max < 1) ? -1 : max;
+	list = LinkedList<string>(max);
 }
 
 void Queue::enqueue(string value)
