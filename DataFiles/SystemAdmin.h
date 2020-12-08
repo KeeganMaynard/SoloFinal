@@ -1,6 +1,8 @@
 #ifndef SYSTEMADMIN_H
 #define SYSTEMADMIN_H
 #include "Users.h"
+#include "Official.h"
+#include "Member.h"
 using namespace std;
 
 class systemAdmin : public User
