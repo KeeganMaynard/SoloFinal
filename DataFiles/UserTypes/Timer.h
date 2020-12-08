@@ -19,7 +19,7 @@ public:
 	Time();
 	Time(int YEAR, int MONTH, int DAY);
 	Time(string DAY);
-	~Time();
+	
 
 	//setters and getters
 	void setYear(int YEAR);
