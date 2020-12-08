@@ -245,13 +245,13 @@ bool LinkedList<T>::search(T& value)
 }
 
 template <class T>
-void LinkedList<T>::peekFront(T& value)
+void LinkedList<T>::peekHead(T& value)
 {
 	value = head->value;
 }
 
 template <class T>
-void LinkedList<T>::peekEnd(T& value)
+void LinkedList<T>::peekTail(T& value)
 {
 	value = tail->value;
 }
