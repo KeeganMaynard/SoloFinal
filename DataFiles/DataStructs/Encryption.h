@@ -1,3 +1,6 @@
+/*
+Hashing algorithm is FNV1a, which was chosen becasue I found it when I was researching built in hashing functions for the project
+*/
 #ifndef ENCRYPTION_H
 #define ENCRYPTION_H
 #include <string>
@@ -15,6 +18,7 @@ public:
 	Encryption();
 	
 	//functions
+	FNV1a(string input);
 	string encryption(string line);
 	string decryption(string line);
 };
