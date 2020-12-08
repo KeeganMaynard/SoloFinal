@@ -21,6 +21,15 @@ long long Encryption::FNV1a(string input)
 string Encryption::encryption(string line)
 {
 	string toEncrypt = "";
+
+	for (int i = 0; i < line.length(); i++)
+	{
+		int ascii = line[i] + 129 + scrambler[position % scrambler.size()];		//adding 129 will give valid ascii value, scrambler offsets the value
+		postition++;
+		char asciiValue = ascii;
+		toEncrypt = asciiValue;
+	}
+	return toEncrypt;
 }
 
 string Encryption::decryption(string line)
