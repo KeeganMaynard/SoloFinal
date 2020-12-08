@@ -43,7 +43,19 @@ void AVLtree<T>::midpoints(vector<Node<T>*>& list, int front, int end)
 template <class T>
 void AVLtree<T>::delSubRoot(Node<T>*& subRoot)
 {
+	Node<T>* left = subRoot->left;
+	Node<T>* right = subRoot->right;
+	delete subRoot;
 
+	if (left != nullptr)
+	{
+		delSubRoot(left);
+	}
+
+	if (right != nullptr)
+	{
+		delSubRoot(right);
+	}
 }
 
 template <class T>
