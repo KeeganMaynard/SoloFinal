@@ -32,12 +32,12 @@ public:
 	void delHead();								//deletes head value, called in del
 	void delTail();								//deletes tail value, called in del
 	bool search(T& value);						//searches for value in list, returns true/false
-	void peekFront(T& value);					//assigns parameter to the head
-	void peekEnd(T& value);						//assigns parameter to the tail
+	void peekHead(T& value);					//assigns parameter to the head
+	void peekTail(T& value);					//assigns parameter to the tail
 	void display();								//displays all items in the list
 	bool full();								//checks if list is full, returns true/false
 	bool empty();								//checks if list is empty, returns true/false
-	int getCount();									//returns the number of items in the list
+	int getCount();								//returns the number of items in the list
 	void clearAll();							//deletes all items in the list
 	void operator = (const LinkedList& list);	//operator overload for deep copy
 };
