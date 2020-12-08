@@ -1,6 +1,7 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 #include "Users.h"
+#include <fstream>
 using namespace std;
 
 class Member : public User
