@@ -36,7 +36,7 @@ void Queue::enqueue(string value)
 
 void Queue::dequeue(string& value)
 {
-	list.peekFront(item);
+	list.peekHead(item);
 	list.delHead();
 }
 
@@ -52,7 +52,7 @@ bool Queue::isFull()
 
 void Queue::peek(string& value)
 {
-	list.peekFront(value);
+	list.peekHead(value);
 }
 
 void Queue::clearQueue()
@@ -67,20 +67,23 @@ void Queue::displayQueue()
 
 void Queue::saveQueue()
 {
-	//deep copy the linked list
+	Encryption::position = 0;
+	LinkedList<string> copy = list;
 	string input = "";
-	ofstream outFile("FileID.txt");				//will need to determine which file to write to
+	ofstream outFile("InfoFiles/Requests.txt");				//where the info will go
 	if (outFile)
 	{
-		//while the deep copy link list is not empty
-			//get the value of the first element and assign it to the string input
-			//delete the first element
-			//outFile << input << endl;
+		while (copy.empty() != true)
+		{
+			copy.peekHead(input);
+			copy.delHead();
+			outFile << Encryption::encryption(input) << endl;
+		}
 	}
 	else
 	{
-		outFile.close()					//close before returning
-		cout << "Error: the file FileID.txt cannot be accessed at this time." << endl;		//figure out file to write to
+		outFile.close();					//close before returning
+		cout << "Error: the file Requests.txt cannot be accessed at this time." << endl;
 		return;
 	}
 	outFile.close();
@@ -88,23 +91,24 @@ void Queue::saveQueue()
 
 void Queue::constructQueue()
 {
-	//clear the list
+	list.clearAll();
 	string input = "";
 	ifstream inFile;
-	inFile.open("FileID.txt");					//figure out the name
+	inFile.open("InfoFiles/Requests.txt");					
 	if (inFile)
 	{
 		while (getline(inFile, input))
 		{
-			//create substrings of the text
-			//decrypt the substrings
-			//append the substrings to the end of the linked list
+			//will need to remove the \r character
+			input = input.substr(0, input.find("\r"));
+			input = Encryption::decryption(input);
+			list.append(input);
 		}
 	}
 	else
 	{
 		inFile.close();					//close before returning
-		cout << "Error: the file FileID.txt cannot be accessed at this time." << endl;
+		cout << "Error: the file Requests.txt cannot be accessed at this time." << endl;
 		return;
 	}
 	inFile.close();
