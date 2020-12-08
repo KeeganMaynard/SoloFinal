@@ -1,7 +1,7 @@
 #ifndef ENCRYPTION_H
 #define ENCRYPTION_H
 #include <string>
-#include <iostream>
+#include <iomanip>
 #include <sstream>
 #include <vector>
 using namespace std;
