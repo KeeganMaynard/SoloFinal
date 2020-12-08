@@ -70,7 +70,7 @@ private:
 	string incrementAccountID(string currentID);						//increments the account number for the next new user to use
 	bool availableID(string ID);										//checks if the account ID is already in use
 
-	friend void initializer();											//initializes the original accounts when the program starts
+	 void initializer();												//initializes the original accounts when the program starts
 
 public:
 	//new account constructor
