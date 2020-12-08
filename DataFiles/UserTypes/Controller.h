@@ -31,7 +31,7 @@ public:
 	void constructTypes(string fileID);						//builds the account types from files
 
 	//login functions
-	string validLogin(string userID, string passowrd);
+	string validLogin(string userID, string password);
 	bool availableID(string userID);						//checks if the entered ID can be found in the files
 
 	//systemAdmin functions
@@ -44,7 +44,7 @@ public:
 	void updateMemberData(string accountID, string newData);
 
 	//bank member functions
-	void dislayAllAccounts(string userID);
+	void displayAllAccounts(string userID);
 	void displayAccountData(string accountID);
 	void changeFirstName(string userID, string currentFirst, string newFirst);
 	void changeLastName(string userID, string currentLast, string newLast);
