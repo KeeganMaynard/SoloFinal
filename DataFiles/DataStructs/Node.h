@@ -23,7 +23,16 @@ Node<T>::Node(T val)
 	value = val;
 	left = nullptr;
 	right = nullptr;
-	list = {item}
+	list = {};
+}
+
+template <class T>
+Node<T>::Node(T val, T item)
+{
+	value = val;
+	left = nullptr;
+	right = nullptr;
+	list = { item };
 }
 
 template <class T>
