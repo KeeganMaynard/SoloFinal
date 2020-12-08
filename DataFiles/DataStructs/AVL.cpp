@@ -217,7 +217,47 @@ void AVLtree<T>::search(T value)
 template <class T>
 void AVLtree<T>::display(int option)
 {
+	string input;
+	cout << "[1] Display System Admins\n[2] Display Bank Officials\n[3] Display Bank Members\n[4] Display By Values" << endl;
+	getline(cin, input);
 
+	if (input.length() > 1)
+	{
+		cout << "Error: invalid input.\nPlease Try Again." << endl;
+	}
+	else
+	{
+		int option = stoi(input);
+	}
+
+	switch (option)
+	{
+	case 1:
+	{
+		displaySystemAdmins(root);
+		break;
+	}
+	case 2:
+	{
+		displayOfficials(root);
+		break;
+	}
+	case 3:
+	{
+		displayMembers(root);
+		break;
+	}
+	case 4:
+	{
+		displayItems(root);
+		break;
+	}
+	default:
+	{
+		cout << "Error: invalid input.\nPlease try again." << endl;
+		break;
+	}
+	}
 }
 
 template <class T>
