@@ -1,7 +1,9 @@
 #ifndef USERS_H
 #define USERS_H
 #include "DataStructs/Timer.h"
+#include "DataStructs/Encryption.h"
 #include <fstream>
+#include <vector>
 using namespace std;
 
 class User
