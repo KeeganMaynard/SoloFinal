@@ -10,6 +10,7 @@ struct Node
 	vector <T> list;
 	Node* left;
 	Node* right;
+	int height;
 
 	Node();
 	Node(T val);
@@ -24,6 +25,7 @@ Node<T>::Node(T val)
 	left = nullptr;
 	right = nullptr;
 	list = {};
+	height = 1;
 }
 
 template <class T>
@@ -33,6 +35,7 @@ Node<T>::Node(T val, T item)
 	left = nullptr;
 	right = nullptr;
 	list = { item };
+	height = 1;
 }
 
 template <class T>
@@ -42,5 +45,6 @@ Node<T>::Node(T val, vector<T> items)
 	left = nullptr;
 	right = nullptr;
 	list = items;
+	height = 1;
 }
 #endif
