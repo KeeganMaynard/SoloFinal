@@ -254,6 +254,12 @@ Node<T>* AVLtree<T>::rotateLeft(Node<T>*& L)
 }
 
 template <class T>
+Node<T>* AVLtree<T>::rightMost(Node<T>*& subRoot)
+{
+
+}
+
+template <class T>
 void AVLtree<T>::saveAVL(Node<T>* startNode, ofstream& outFile)
 {
 
@@ -280,7 +286,9 @@ int AVLtree<T>::getHeight()
 template <class T>
 bool AVLtree<T>::getBalance()
 {
-
+	int getbal = Balance(root);
+	bool bal = ((getbal <= 1) && (getbal >= -1)) ? true : false;
+	return bal;
 }
 
 template <class T>
@@ -320,7 +328,11 @@ void AVLtree<T>::insertList(T value, vector<T> items)
 template <class T>
 void AVLtree<T>::del(T value)
 {
-
+	if (root != nullptr)
+	{
+		root = delAssist(root, value);
+		count--;
+	}
 }
 
 template <class T>
