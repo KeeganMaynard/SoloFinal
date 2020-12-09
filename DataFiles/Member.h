@@ -26,7 +26,7 @@ public:
 
 	//functions
 	void displayData();
-	void getHistory(vector<string> acntHist);
+	void getAccountHistory(vector<string> acntHist);
 	void saveData();
 	void constructMemeber(string fileID);
 };
