@@ -14,7 +14,7 @@ struct dictEntry
 
 	dictEntry();
 	dictEntry(string keyValue);
-	dictEntry(string keyValue, dataInfo);
+	dictEntry(string keyValue, string dataInfo);
 	
 	//operator overloads to insert entries into linked list
 	bool operator == (const dictEntry& values);
