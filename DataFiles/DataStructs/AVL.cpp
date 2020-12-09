@@ -485,7 +485,10 @@ void AVLtree<T>::insertItem(T value, T item)
 template <class T>
 void AVLtree<T>::insertList(T value, vector<T> items)
 {
-
+	del(value);
+	Node<T>* tempNode = new Node<T>(value, items);
+	root = insertAssist(root, tempNode);
+	count++;
 }
 
 template <class T>
@@ -508,13 +511,35 @@ void AVLtree<T>::delItem(T value, T item)
 template <class T>
 vector<T> AVLtree<T>::returnItems(T value)
 {
-
+	Node<T>* nodePtr = searchAssist(value, root);
+	if (nodePtr != nullptr)
+	{
+		return nodePtr->list;
+	}
+	else
+	{
+		//returning empty vector
+		vector<T> invalid = {};
+		return invalid;
+	}
 }
 
 template <class T>
 void AVLtree<T>::search(T value)
 {
-
+	Node<T>* searchNode = searchAssist(value, root);
+	if (searchNode != nullptr)
+	{
+		for (int i = 0; i < searchNode->list.size(); i++)
+		{
+			cout << searchNode->list[i] << " ";
+		}
+		cout << endl;
+	}
+	else
+	{
+		cout << "Error: invalid input.\nPlease try again." << endl;
+	}
 }
 
 template <class T>
