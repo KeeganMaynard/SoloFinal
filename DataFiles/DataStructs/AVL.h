@@ -30,7 +30,7 @@ protected:
 	Node<T>* delAssist(Node<T>*& subRoot, T value);
 	Node<T>* delItemAssist(Node<T>*& subRoot, T value, T item);
 	Node<T>* searchAssist(T val, Node<T>* subRoot);
-	void displaySystemAdmins(Node<T>* subRoot);
+	void displaySystemAdmins(Node<T>* subRoot);			//all of these are in order traversal
 	void displayOfficials(Node<T>* subRoot);
 	void displayMembers(Node<T>* subRoot);
 	void displayItems(Node<T>* subRoot);
@@ -39,7 +39,6 @@ protected:
 	Node<T>* rotateLeft(Node<T>*& L);					//L is short for left
 	Node<T>* rightMost(Node<T>*& subRoot);
 	void saveAVL(Node<T>* startNode, ofstream& outFile);
-	Node<T>* constructorAssist(string nodes);
 
 public:
 	AVLtree();
