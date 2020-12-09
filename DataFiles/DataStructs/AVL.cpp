@@ -37,7 +37,19 @@ int AVLtree<T>::Balance(Node<T>* subRoot)
 template <class T>
 int AVLtree<T>::leafs(Node<T>* subRoot)
 {
-
+	//recursively traverses the tree and adds 1s and 0s to get number of leafs
+	if (subRoot == nullptr)
+	{
+		return 0;
+	}
+	else if ((subRoot->left == nullptr) && (subRoot->right == nullptr))
+	{
+		return 1;
+	}
+	else
+	{
+		return leafs(subRoot->left) + leafs(subRoot->right);
+	}
 }
 
 template <class T>
@@ -457,12 +469,6 @@ void AVLtree<T>::saveAVL(Node<T>* startNode, ofstream& outFile)
 }
 
 template <class T>
-Node<T>* AVLtree<T>::constructorAssist(string nodes)
-{
-
-}
-
-template <class T>
 AVLtree<T>::~AVLtree()
 {
 	delSubRoot(root);
@@ -471,7 +477,8 @@ AVLtree<T>::~AVLtree()
 template <class T>
 int AVLtree<T>::getHeight()
 {
-
+	Node<T>* nodePtr = root;
+	return Height(root);
 }
 
 template <class T>
@@ -485,13 +492,13 @@ bool AVLtree<T>::getBalance()
 template <class T>
 int AVLtree<T>::getLeafCount()
 {
-
+	return getLeafCount(root);
 }
 
 template <class T>
 int AVLtree<T>::getCount()
 {
-
+	return count;
 }
 
 template <class T>
@@ -619,11 +626,47 @@ void AVLtree<T>::display(int option)
 template <class T>
 void AVLtree<T>::saveData(string fileID)
 {
+	Encryption::position = 0;
+	ofstream outFile;
+	outFile.open(fileID);
+	if (outFile)
+	{
+		Node<T>* nodePtr = root;
+		saveAVL(nodePtr, outFile);
+	}
+	else
+	{
+		outFile.close();				//close file before returning
+		cout << "Error: the file " << fileID << " cannot be accessed at this time." << endl;
+		return;
+	}
 
+	outFile.close();
 }
 
 template <class T>
 void AVLtree<T>::contstructTree(string fileID)
 {
+	Encryption::position = 0;
+	ifstream inFile(fileID);
+	if (inFile)
+	{
+		//destory the tree
+		count = 0;
+		itemCount = 0;
+		delSubRoot(root);
 
+		string text = "";
+		vector<Node<T>*> newNodes = {};
+
+		while (getline(inFile, text))
+		{
+			//rebuild the tree by splitting the text input into substrings
+		}
+		//add midpoints to the input to decrease the height of the tree
+	}
+	else
+	{
+		cout << "Error: the file " << fileID << " cannot be accessed at this time." << endl;
+	}
 }
