@@ -1,6 +1,8 @@
 #ifndef MEMBER_H
 #define MEMBER_H
 #include "Users.h"
+#include "DataStructs/Encryption.h"
+#include "Controller.h"
 #include <fstream>
 #include <vector>
 using namespace std;
