@@ -20,12 +20,12 @@ public:
 	static size_t position;				//sets the position in the text file
 	
 	//functions
-	long long FNV1a(string input);
-	string encryption(string line);
-	string decryption(string line);
-	string hasher(string input);
-	string hexer(long long Input);
-	int index(string input, int size);
+	static long long FNV1a(string input);
+	static string encryption(string line);
+	static string decryption(string line);
+	static string hasher(string input);
+	static string hexer(long long Input);
+	static int index(string input, int size);
 };
 
 size_t Encryption::position = 0;
