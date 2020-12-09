@@ -11,7 +11,14 @@ AVLtree<T>::AVLtree()
 template <class T>
 int AVLtree<T>::Height(Node<T>*& subRoot)
 {
-
+	if (subRoot == nullptr)
+	{
+		return 0;
+	}
+	else
+	{
+		return subRoot->height;
+	}
 }
 
 template <class T>
