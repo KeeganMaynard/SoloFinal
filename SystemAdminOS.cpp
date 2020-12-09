@@ -151,7 +151,7 @@ void cofigOfficial(systemAdmin& admin)
 		cout << "Enter the ID of the bank official for removal: ";
 		getline(cin, ID);
 		//need to get the account info of the official
-		admin.delOfficial(ID);
+		//admin.delOfficial(ID);
 		admin.setHistory("Deleted bank official: " + ID);
 		admin.storeUserInfo();
 		cout << "Completed removal of the bank official account with the ID " << ID << endl;
@@ -166,12 +166,12 @@ void cofigOfficial(systemAdmin& admin)
 		getline(cin, option);
 		if (option == "1")
 		{
-			admin.setActiveOfficial(ID);
+			//admin.setActiveOfficial(ID);
 			admin.setHistory("Set active status of official: " + ID);
 		}
 		else if (option == "2")
 		{
-			admin.setInactiveOfficial(ID);
+			//admin.setInactiveOfficial(ID);
 			admin.setHistory("Set inactive status of official: " + ID);
 		}
 		else
