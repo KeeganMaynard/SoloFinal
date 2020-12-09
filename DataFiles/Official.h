@@ -3,6 +3,9 @@
 #include "Users.h"
 #include "Member.h"
 #include "Account/Account.h"
+#include "Controller.h"
+#include "DataStructs/Encryption.h"
+#include <vector>
 using namespace std;
 
 class Official : public User
