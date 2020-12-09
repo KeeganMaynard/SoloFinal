@@ -1,6 +1,6 @@
 #ifndef USERS_H
 #define USERS_H
-#include "Timer.h"
+#include "DataStructs/Timer.h"
 #include <fstream>
 using namespace std;
 
