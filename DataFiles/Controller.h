@@ -9,7 +9,7 @@ using namespace std;
 struct memberData
 {
 	AVLtree<string> memberFirstName, memberLastName, memberPhone, memberAddress, userLog;			//names of files where information will be stored
-	accountFiles allFiles;																			//create a folder/file to store the information for different accounts
+	accountDict allFiles;																			//create a folder/file to store the information for different accounts
 };
 
 class Controller
