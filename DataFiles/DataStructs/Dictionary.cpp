@@ -176,6 +176,7 @@ bool accountDict::inDict(string keyID)
 
 void accountDict::saveEntry(string fileID)
 {
+	Encryption::position = 0;
 	ofstream outFile(fileID);
 	dictEntry storedInfo;
 	if (outFile)
@@ -184,15 +185,16 @@ void accountDict::saveEntry(string fileID)
 		{
 			while (!dictionary[i].empty())
 			{
-				//assign storedInfo to the entry
-				//delete the entry
-				//save storedInfo by writing it to the text file
+				dictionary[i].peekHead(storedInfo);
+				dictionary[i].delHead();
+				string text = storedInfo.key + " " + storedInfo.data;
+				outFile << Encryption::encryption(text) << endl;
 			}
 		}
 	}
 	else
 	{
-		outFile.close()			//close the file before returning 
+		outFile.close();		//close the file before returning 
 		cout << "Error: cannot write to " << fileID << " at this time" << endl;
 		return;
 	}
