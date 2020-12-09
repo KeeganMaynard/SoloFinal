@@ -63,11 +63,27 @@ void accountDict::updateFactor()
 
 void accountDict::resize()
 {
-	//deep copy the linked list into a temporary linked list 
-	//assign temporary variables to store the number of usedLocals and collisionCounter
-	//for loop of each index in the the array
-		//while the linked list at each each index is not empty, assign the value from the old linked list to the new one and then delete it from the old
-	//reset the variables with the new information
+	LinkedList<dictEntry>* temp = new LinkedList<dictEntry>[maximum * 2];
+	int tempLocals;
+	int tempCollisions;
+
+	for (int i = 0; i < maximum; i++)
+	{
+		while (dictionary[i].empty() == false)
+		{
+			dictEntry entry;
+			dictionary[i].peekHead(entry);
+			dictionary[i].delHead();
+
+			int index = Encryption::index(entry.key, maximum * 2);
+			if (temp[index].empty())
+			{
+				tempLocals++;
+			}
+			temp[index].append(entry);
+			//implement check for collisions
+		}
+	}
 }
 
 void accountDict::insert(dictEntry newEntry)
@@ -145,10 +161,10 @@ string accountDict::search(string keyID)
 
 bool accountDict::inDict(string keyID)
 {
-	//get the location of the keyID in the linked list
-	//get the value of the keyID
-	//assign a bool to be assigned the value of the search for this value
-	//return that bool variable
+	int index = Encryption::index(keyID, maximum);
+	dictEntry entry(keyID);
+	bool present = dictionary[index].search(entry);
+	return present;
 }
 
 void accountDict::saveEntry(string fileID)
