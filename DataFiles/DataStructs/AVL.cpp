@@ -189,6 +189,7 @@ Node<T>* AVLtree<T>::delAssist(Node<T>*& subRoot, T value)
 		}
 		else
 		{
+			//only one child node
 			Node<T>* onlyChild = (subRoot->left != nullptr) ? subRoot->left : subRoot->right;
 			delete subRoot;
 			subRoot = onlyChild;
@@ -203,7 +204,89 @@ Node<T>* AVLtree<T>::delAssist(Node<T>*& subRoot, T value)
 template <class T>
 Node<T>* AVLtree<T>::delItemAssist(Node<T>*& subRoot, T value, T item)
 {
+	//similar to the delAssist function
+	if (value > subRoot->value)
+	{
+		if (subRoot->right != nullptr)
+		{
+			subRoot->right = delItemAssist(subRoot->right, value, item);
+		}
+		else
+		{
+			count++;
+		}
+	}
+	else if (value < subRoot->value)
+	{
+		if (subRoot->left != nullptr)
+		{
+			subRoot->left = delItemAssist(subRoot->left, value, item);
+		}
+		else
+		{
+			count++;
+		}
+	}
+	else
+	{
+		bool present = false;
+		int index = 0;
 
+		for (int i = 0; i < subRoot->list.size(); i++)
+		{
+			if (item = subRoot->list[i])
+			{
+				present = true;
+				index = i;
+				break;
+			}
+		}
+
+		if (present)
+		{
+			if (subRoot->list.size() == 1)
+			{
+				//if there are two child nodes
+				if ((subRoot->left != nullptr) && (subRoot->right != nullptr))
+				{
+					Node<T>* largestChild = rightMost(subRoot->left);
+					subRoot->value = largestChild->value;
+					subRoot->list = largestChild->list;
+					itemCount -= largestChild->list.size();
+					subRoot->left = delAssist(subRoot->left, largestChild->value);
+				}
+				else if ((subRoot->left == nullptr) && (subRoot->right == nullptr))
+				{
+					//if its a leaf node
+					delete subRoot;
+					subRoot = nullptr;
+					return subRoot;
+				}
+				else
+				{
+					//only one child node
+					Node<T>* onlyChild = (subRoot->left != nullptr) ? subRoot->left : subRoot->right;
+					delete subRoot;
+					subRoot = onlyChild;
+				}
+			}
+			else
+			{
+				subRoot->list.erase(subRoot->list.begin() + index);			//index tracts the location of item
+				count++;
+			}
+			itemCount--;
+		}
+		else
+		{
+			cout << "Error: invalid input.\nPlease try again." << endl;
+			count++;
+		}
+	}
+
+	subRoot->height = max(Height(subRoot->left), Height(subRoot->right)) + 1;
+	rotate(subRoot);
+	return subRoot;
 }
 
 template <class T>
@@ -272,7 +355,30 @@ void AVLtree<T>::displayItems(Node<T>* subRoot)
 template <class T>
 void AVLtree<T>::rotate(Node<T>*& subRoot)
 {
+	int bal = Balance(subRoot);
+	int left = Balance(subRoot->left);
+	int right = Balance(subRoot->right);
 
+	if ((left >= 0) && (bal > 1))
+	{
+		subRoot = rotateRight(subRoot);
+	}
+	else if ((left < 0) && (bal > 1))
+	{
+		//double rotation
+		subRoot->left = rotateLeft(subRoot->left);
+		subRoot = rotateRight(subRoot);
+	}
+	else if ((right > 0) && (bal < -1))
+	{
+		//double rotation
+		subRoot->right = rotateRight(subRoot->right);
+		subRoot = rotateLeft(subRoot);
+	}
+	else if ((right <= 0) && (bal < -1))
+	{
+		subRoot = rotateLeft(subRoot);
+	}
 }
 
 template <class T>
