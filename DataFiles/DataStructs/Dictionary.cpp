@@ -94,9 +94,9 @@ void accountDict::del(string keyID)
 	}
 	else
 	{
-		//get the location of the keyID in the linked list
-		//get the value of the keyID from the linked list
-		//remove the keyID from the linked list
+		int index = Encryption::index(keyID, maximum);
+		dictEntry toDel(keyID);
+		dictionary[index].del(toDel);
 		totalKeys--;
 	}
 }
