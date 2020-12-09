@@ -103,7 +103,43 @@ Node<T>* AVLtree<T>::insertAssist(Node<T>*& subRoot, Node<T>*& newRoot)
 template <class T>
 Node<T>* AVLtree<T>::insertItemAssist(Node<T>*& subRoot, Node<T>*& newRoot)
 {
+	if (subRoot == nullptr)
+	{
+		return newRoot;
+	}
+	else if (newRoot->value > subRoot->value)
+	{
+		subRoot->right = insertItemAssist(subRoot->right, newRoot);
+	}
+	else if (newRoot->value < subRoot->value)
+	{
+		subRoot->left = insertItemAssist(subRoot->left, newRoot);
+	}
+	else
+	{
+		bool valid = true;
+		//check if the newRoot is already in the list
+		for (int i = 0; i < subRoot->list.size(); i++)
+		{
+			if (newRoot->list[0] == subRoot->list[i])
+			{
+				cout << "Error: invalid input.\nDuplicate entries are not allowed." << endl;
+				valid = false;
+				break;
+			}
+		}
+		if (valid)
+		{
+			subRoot->list.push_back(newRoot->list[0]);
+			itemCount++;
+		}
 
+		count--;
+		subRoot->height = max(Height(subRoot->left), Height(subRoot->right)) + 1;
+		rotate(subRoot);
+
+		return subRoot;
+	}
 }
 
 template <class T>
@@ -270,7 +306,9 @@ void AVLtree<T>::insert(T value)
 template <class T>
 void AVLtree<T>::insertItem(T value, T item)
 {
-
+	Node<T>* newRoot = new Node<T>(value, item);
+	root = insertItemAssist(root, newRoot);
+	count++;
 }
 
 template <class T>
