@@ -4,19 +4,19 @@
 using namespace std;
 
 template <class T>
-struct Node
+struct node
 {
 	T value;
-	Node<T>* next;
-	Node<T>* prev;
+	node<T>* next;
+	node<T>* prev;
 };
 
 template <class T>
 class LinkedList
 {
 private:
-	Node<T>* head;
-	Node<T>* tail;
+	node<T>* head;
+	node<T>* tail;
 	int maximum;
 	int currentCount;
 
@@ -59,7 +59,7 @@ LinkedList<T>::LinkedList(const LinkedList& list)
 	maximum = list.maximum;
 	currentCount = 0;
 
-	Node<T>* nodePtr = list.head;
+	node<T>* nodePtr = list.head;
 	while (nodePtr != nullptr)
 	{
 		append(nodePtr->value);
@@ -70,8 +70,8 @@ LinkedList<T>::LinkedList(const LinkedList& list)
 template <class T>
 LinkedList<T>::~LinkedList()
 {
-	Node<T>* nodePtr = head;
-	Node<T>* delNode = nullptr;
+	node<T>* nodePtr = head;
+	node<T>* delNode = nullptr;
 
 	while (nodePtr != nullptr)
 	{
@@ -95,7 +95,7 @@ void LinkedList<T>::push(T item)
 	}
 	else
 	{
-		Node<T>* newNode = new Node<T>;
+		node<T>* newNode = new node<T>;
 		newNode->value = item;
 		newNode->next = nullptr;
 
@@ -108,7 +108,7 @@ void LinkedList<T>::push(T item)
 		}
 		else
 		{
-			Node<T>* oldHead = head;
+			node<T>* oldHead = head;
 			head = newNode;
 			oldHead->prev = head;
 			head->next = oldHead;
@@ -125,7 +125,7 @@ void LinkedList<T>::append(T item)
 	}
 	else
 	{
-		Node<T>* newNode = new Node<T>;
+		node<T>* newNode = new node<T>;
 		newNode->value = item;
 		newNode->next = nullptr;
 
@@ -149,7 +149,7 @@ void LinkedList<T>::del(T item)
 	}
 	else
 	{
-		Node<T>* nodePtr = head;
+		node<T>* nodePtr = head;
 		while (nodePtr->value != item)
 		{
 			nodePtr = nodePtr->next;
@@ -169,7 +169,7 @@ void LinkedList<T>::del(T item)
 		}
 		else
 		{
-			Node<T>* past = nodePtr->prev;
+			node<T>* past = nodePtr->prev;
 			past->next = nodePtr->next;
 			delete nodePtr;
 			nodePtr = nullptr;
@@ -182,7 +182,7 @@ void LinkedList<T>::del(T item)
 template <class T>
 void LinkedList<T>::delHead()
 {
-	Node<T>* delNode = head;
+	node<T>* delNode = head;
 	if (delNode == tail)
 	{
 		delete delNode;
@@ -203,7 +203,7 @@ void LinkedList<T>::delHead()
 template <class T>
 void LinkedList<T>::delTail()
 {
-	Node<T>* delNode = tail;
+	node<T>* delNode = tail;
 	if (delNode == head)
 	{
 		delete delNode;
@@ -226,7 +226,7 @@ bool LinkedList<T>::search(T& value)
 {
 	if (!empty())
 	{
-		Node<T>* nodePtr = head;
+		node<T>* nodePtr = head;
 		while (nodePtr->value != value)
 		{
 			nodePtr = nodePtr->next;
@@ -261,7 +261,7 @@ void LinkedList<T>::display()
 {
 	if (!empty())
 	{
-		Node<T>* nodePtr = head;
+		node<T>* nodePtr = head;
 		while (nodePtr != nullptr)
 		{
 			cout << nodePtr->value << " ";
@@ -286,7 +286,7 @@ template <class T>
 bool LinkedList<T>::empty()
 {
 	bool status = (currentCount == 0) ? true : false;
-	return status
+	return status;
 }
 
 template <class T>
@@ -298,8 +298,8 @@ int LinkedList<T>::getCount()
 template <class T>
 void LinkedList<T>::clearAll()
 {
-	Node<T>* nodePtr = head;
-	Node<T>* delNode = nullptr;
+	node<T>* nodePtr = head;
+	node<T>* delNode = nullptr;
 
 	while (nodePtr != nullptr)
 	{
@@ -321,7 +321,7 @@ void LinkedList<T>::operator = (const LinkedList& list)
 	clearAll();
 	maximum = list.maximum;
 
-	Node<T>* nodePtr = list.head;
+	node<T>* nodePtr = list.head;
 	while (nodePtr != nullptr)
 	{
 		append(nodePtr->value);
