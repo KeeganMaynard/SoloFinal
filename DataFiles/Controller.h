@@ -19,40 +19,40 @@ public:
 	Controller();
 
 	//all files
-	memberData allFiles;
-	vector<AccountVersion> list;			//check if list is correct
+	static memberData allFiles;
+	static vector<AccountVersion> list;			//check if list is correct
 
 	//account functions
-	void initialAccounts();
-	void createType(string acntType, double monthlyFee, double serFee, double interest, double balance);				//balance is not correct, check which variable it is
-	void alterType(string acntType, double monthlyFee, double serFee, double interest, double balance);					//balance is not correct, check which variable it is
-	void displayTypes();
-	void saveTypes();
-	void constructTypes(string fileID);						//builds the account types from files
+	static void initialAccounts();
+	static void createType(string acntType, double monthlyFee, double serFee, double interest, double balance);				//balance is not correct, check which variable it is
+	static void alterType(string acntType, double monthlyFee, double serFee, double interest, double balance);					//balance is not correct, check which variable it is
+	static void displayTypes();
+	static void saveTypes();
+	static void constructTypes(string fileID);						//builds the account types from files
 
 	//login functions
-	string validLogin(string userID, string password);
-	bool availableID(string userID);						//checks if the entered ID can be found in the files
+	static string validLogin(string userID, string password);
+	static bool availableID(string userID);						//checks if the entered ID can be found in the files
 
 	//systemAdmin functions
-	void recordNewOfficial(string ID);						//saves the info of new officials to appropraite file
-	void recordNewSystemAdmin(string ID);					//saves the info of a new system admin to appropriate file
-	vector<string> getMemberLogin(string userID);
+	static void recordNewOfficial(string ID);						//saves the info of new officials to appropraite file
+	static void recordNewSystemAdmin(string ID);					//saves the info of a new system admin to appropriate file
+	static vector<string> getMemberLogin(string userID);
 
 	//bank Official functions
-	void recordNewMember(Member& member, Account& account);	//saves the info of a new member to appropraite file
-	void updateMemberData(string accountID, string newData);
+	static void recordNewMember(Member& member, Account& account);	//saves the info of a new member to appropraite file
+	static void updateMemberData(string accountID, string newData);
 
 	//bank member functions
-	void displayAllAccounts(string userID);
-	void displayAccountData(string accountID);
-	void changeFirstName(string userID, string currentFirst, string newFirst);
-	void changeLastName(string userID, string currentLast, string newLast);
-	void changeAddress(string userID, string currentAddress, string newAddress);
-	void changePhone(string userID, string currentPhone, string newPhone);
-	void newAccount(string userID, string acntType);
+	static void displayAllAccounts(string userID);
+	static void displayAccountData(string accountID);
+	static void changeFirstName(string userID, string currentFirst, string newFirst);
+	static void changeLastName(string userID, string currentLast, string newLast);
+	static void changeAddress(string userID, string currentAddress, string newAddress);
+	static void changePhone(string userID, string currentPhone, string newPhone);
+	static void newAccount(string userID, string acntType);
 };
 
 memberData Controller::allFiles = memberData();
-vector<AccountVersion> Controller::accountVersionList = {};
+vector<AccountVersion> Controller::list = {};
 #endif
