@@ -72,13 +72,18 @@ void accountDict::resize()
 
 void accountDict::insert(dictEntry newEntry)
 {
-	//get the location to store newEntry
-	//test if the location is empty
-	//increment usedLocals
-	//append the new value to the linked list at the location
-	//increment totalKeys
-	//update the load factor - updateFactor()
-	//check the dictionary for collisions and load threshold
+	int index = Encryption::index(newEntry.key, maximum);
+
+	if (dictionary[index].empty())
+	{
+		usedLocals++;
+	}
+
+	dictionary[index].append(newEntry);
+	totalKeys++;
+	updateFactor();
+
+	//need to implement code to check for collisions and load threshold
 }
 
 void accountDict::del(string keyID)
@@ -124,11 +129,18 @@ bool accountDict::isEmpty()
 
 string accountDict::search(string keyID)
 {
-	//get the location of the keyID in the linked list
-	//get the value of the keyID
-	//check if the keyID is in the linked list - inDict()
-	//if not found in the linked list, return a string that conveys that 
-	//if found, return all the information of the keyID
+	int index = Encryption::index(keyID, maximum);
+	dictEntry entry(keyID);
+	bool present = dictionary[index].search(entry);
+
+	if (present == false)
+	{
+		return "false";
+	}
+	else
+	{
+		return entry.data;
+	}
 }
 
 bool accountDict::inDict(string keyID)
@@ -205,9 +217,4 @@ void accountDict::refreshDict()
 			//deep copy the new list back into the dictionary
 		}
 	}
-}
-
-string accountDict::hashEntry(string text)
-{
-	//code to hash the account keys so that they can be stored in the linked list
 }
