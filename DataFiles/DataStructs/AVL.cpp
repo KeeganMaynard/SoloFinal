@@ -145,7 +145,59 @@ Node<T>* AVLtree<T>::insertItemAssist(Node<T>*& subRoot, Node<T>*& newRoot)
 template <class T>
 Node<T>* AVLtree<T>::delAssist(Node<T>*& subRoot, T value)
 {
+	if (value > subRoot->value)
+	{
+		if (subRoot->right != nullptr)
+		{
+			subRoot->right = delAssist(subRoot->right, value);
+		}
+		else
+		{
+			count++;
+		}
+	}
+	else if (value < subRoot->right)
+	{
+		if (subRoot->left != nullptr)
+		{
+			subRoot->left = delAssist(subRoot->left, value);
+		}
+		else
+		{
+			count++;
+		}
+	}
+	else
+	{
+		itemCount -= subRoot->list.size();
 
+		//if there are two child nodes
+		if ((subRoot->left != nullptr) && (subRoot->right != nullptr))
+		{
+			Node<T>* largestChild = rightMost(subRoot->left);
+			subRoot->value = largestChild->value;
+			subRoot->list = largestChild->list;
+			itemCount -= largestChild->list.size();
+			subRoot->left = delAssist(subRoot->left, largestChild->value);
+		}
+		else if ((subRoot->left == nullptr) && (subRoot->right == nullptr))
+		{
+			//if its a leaf node
+			delete subRoot;
+			subRoot = nullptr;
+			return subRoot;
+		}
+		else
+		{
+			Node<T>* onlyChild = (subRoot->left != nullptr) ? subRoot->left : subRoot->right;
+			delete subRoot;
+			subRoot = onlyChild;
+		}
+	}
+	subRoot->height = max(Height(subRoot->left), Height(subRoot->right)) + 1;
+	rotate(subRoot);
+
+	return subRoot;
 }
 
 template <class T>
@@ -256,7 +308,12 @@ Node<T>* AVLtree<T>::rotateLeft(Node<T>*& L)
 template <class T>
 Node<T>* AVLtree<T>::rightMost(Node<T>*& subRoot)
 {
+	while (subRoot->right != nullptr)
+	{
+		subRoot = subRoot->right;
+	}
 
+	return subRoot;
 }
 
 template <class T>
@@ -338,7 +395,8 @@ void AVLtree<T>::del(T value)
 template <class T>
 void AVLtree<T>::delItem(T value, T item)
 {
-
+	root = delItemAssist(root, value, item);
+	count--;
 }
 
 template <class T>
