@@ -49,9 +49,6 @@ public:
 	bool inDict(string keyID);		//used to see if key is in the dictionary
 	void saveEntry(string fileID);
 	void constructDict(string fileID);
-	void refreshDict();
-	string hashEntry(string text);	//hashes the value to store in the dictionary
-
-
+	void refreshDict();				//goes through each account in the dictionary to rebuild them
 };
 #endif
