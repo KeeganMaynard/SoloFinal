@@ -16,7 +16,7 @@ private:
 	bool accountStatus;
 
 public:
-	AccountVersion(string acntType, double monthlyFee, double serFee, double nsfFee, double interest, double bal, bool acntStatus);
+	AccountVersion(string acntType, double monthlyFee, double serFee, double interest, double bal, bool acntStatus);
 	//setters
 	void setMonthFee(double fee);
 	void setServiceFee(double fee);
