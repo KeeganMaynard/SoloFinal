@@ -15,7 +15,7 @@ void memberLogin(string ID)
 	Member member;
 	member.constructMemeber("InfoFiles/" + ID + ".txt");
 	cout << "Last Login: " << member.getLogin() << endl;
-	cout << "Recent History: " << member.getHistory() << endl;
+	cout << "Recent History: " << member.getHistory() << endl;		//figure out how to get the correct vector in getHistory(#here#)
 	member.setLogin(Time().timeNow());
 
 	bool run = true;
