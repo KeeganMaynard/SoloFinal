@@ -46,7 +46,7 @@ void Member::displayData()
 
 }
 
-void Member::getHistory(vector<string> acntHist)
+void Member::getAccountHistory(vector<string> acntHist)
 {
 	string accountID = "";
 	bool present = false;
