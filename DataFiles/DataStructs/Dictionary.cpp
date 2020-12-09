@@ -138,7 +138,7 @@ void accountDict::display()
 	{
 		if (!dictionary[i].empty())
 		{
-			//display information to make these numbers make sense - index: i and the size of index i
+			cout << "Key: " << i << " Size: " << dictionary[i].getCount() << endl;
 			dictionary[i].display();
 		}
 	}
@@ -203,6 +203,7 @@ void accountDict::saveEntry(string fileID)
 
 void accountDict::constructDict(string fileID)
 {
+	Encryption::position = 0;
 	ifstream inFile;
 	inFile.open(fileID);
 	if (inFile)
@@ -232,14 +233,18 @@ void accountDict::refreshDict()
 		if (!dictionary[i].empty())
 		{
 			int size = 0;		//set the size of the dictionary
-			//create a temprorary linked list
+			LinkedList<dictEntry> temp;
 
 			for (int x = 0; x < size; x++)
 			{
-				//rebuild the dictionary so that interest can be calculated with the time difference
+				dictEntry oldEntry;
+				dictionary[x].peekHead(oldEntry);
+				dictionary[x].delHead();
+
+				//implement account object to append to temp
 			}
 
-			//deep copy the new list back into the dictionary
+			dictionary[i] = temp;
 		}
 	}
 }
