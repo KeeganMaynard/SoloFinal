@@ -1,6 +1,8 @@
 #ifndef OFFICIAL_H
 #define OFFICIAL_H
 #include "Users.h"
+#include "Member.h"
+#include "Account/Account.h"
 using namespace std;
 
 class Official : public User
