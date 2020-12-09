@@ -24,7 +24,14 @@ int AVLtree<T>::Height(Node<T>*& subRoot)
 template <class T>
 int AVLtree<T>::Balance(Node<T>* subRoot)
 {
-
+	if (subRoot == nullptr)
+	{
+		return 0;
+	}
+	else
+	{
+		return Height(subRoot->left) - Height(subRoot->right);
+	}
 }
 
 template <class T>
@@ -161,13 +168,31 @@ void AVLtree<T>::rotate(Node<T>*& subRoot)
 template <class T>
 Node<T>* AVLtree<T>::rotateRight(Node<T>*& R)
 {
+	Node<T>* kid = R->left;
+	Node <T>* gKid = kid->right;
 
+	kid->right = R;
+	R->left = gKid;
+
+	kid->height = max(Height(kid->left), Height(kid->right)) + 1;
+	R->height = max(Height(R->left), Height(R->right)) + 1;
+
+	return kid;
 }
 
 template <class T>
 Node<T>* AVLtree<T>::rotateLeft(Node<T>*& L)
 {
+	Node<T>* kid = L->right;
+	Node<T>* gKid = kid->left;
 
+	L->right = gKid;
+	kid->left = L;
+
+	kid->height = max(Height(kid->left), Height(kid->right)) + 1;
+	L->height = max(Height(L->left), Height(L->right)) + 1;
+
+	return kid;
 }
 
 template <class T>
