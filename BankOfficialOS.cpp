@@ -55,7 +55,8 @@ void officialLogin(string ID)
 				string ID;
 				cout << "Enter the user ID for this account: ";
 				getline(cin, ID);
-				official.addNewAccount(official);
+				//will need to get account information to build new account
+				//official.addNewAccount(official, newAccount);
 				//add check to make sure this ID is for a member
 				//showcase the types of accounts available
 				//user selects what type of account they want
