@@ -292,7 +292,25 @@ Node<T>* AVLtree<T>::delItemAssist(Node<T>*& subRoot, T value, T item)
 template <class T>
 Node<T>* AVLtree<T>::searchAssist(T val, Node<T>* subRoot)
 {
-
+	if (subRoot != nullptr)
+	{
+		if (val < subRoot->value)
+		{
+			return searchAssist(val, subRoot->left);
+		}
+		else if (val > subRoot->value)
+		{
+			return searchAssist(val, subRoot->right);
+		}
+		else
+		{
+			return subRoot;
+		}
+	}
+	else
+	{
+		return nullptr;		//returns a nullptr if the value does not exist
+	}
 }
 
 template <class T>
@@ -425,7 +443,17 @@ Node<T>* AVLtree<T>::rightMost(Node<T>*& subRoot)
 template <class T>
 void AVLtree<T>::saveAVL(Node<T>* startNode, ofstream& outFile)
 {
-
+	if (startNode != nullptr)
+	{
+		saveAVL(startNode->left, outFile);
+		string text = startNode->value;
+		for (int i = 0; i < startNode->list.size(); i++)
+		{
+			text += startNode->left[i];
+		}
+		outFile << Encryption::encryption(text) << endl;
+		saveAVL(startNode->right, outFile);
+	}
 }
 
 template <class T>
