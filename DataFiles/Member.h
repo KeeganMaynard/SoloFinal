@@ -2,6 +2,7 @@
 #define MEMBER_H
 #include "Users.h"
 #include <fstream>
+#include <vector>
 using namespace std;
 
 class Member : public User
