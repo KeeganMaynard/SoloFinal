@@ -1,8 +1,24 @@
 #include "Dictionary.h"
 using namespace std;
 
-//operator overload functions should be define at the top so that they apply to the functions below
-//will try to include those later
+//operator overload functions to correctly save or display entry information
+ostream& operator << (ostream& op, dictEntry entry)
+{
+	op << entry.key << ": " << entry.data;
+	return op;
+}
+
+bool dictEntry::operator==(const dictEntry& values)
+{
+	bool valid = (key == values.key) ? true : false;
+	return valid;
+}
+
+bool dictEntry::operator!=(const dictEntry& values)
+{
+	bool valid = (key == values.key) ? true : false;
+	return valid;
+}
 
 dictEntry::dictEntry()
 {
