@@ -84,6 +84,13 @@ void accountDict::resize()
 			//implement check for collisions
 		}
 	}
+
+	maximum = maximum * 2;
+	delete[] dictionary;
+	dictionary = temp;
+	temp = nullptr;
+	usedLocals = tempLocals;
+	collisionCount = tempCollisions;
 }
 
 void accountDict::insert(dictEntry newEntry)
