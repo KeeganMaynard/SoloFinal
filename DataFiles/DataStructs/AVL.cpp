@@ -91,25 +91,58 @@ Node<T>* AVLtree<T>::searchAssist(T val, Node<T>* subRoot)
 template <class T>
 void AVLtree<T>::displaySystemAdmins(Node<T>* subRoot)
 {
-
+	if (subRoot)
+	{
+		displaySystemAdmins(subRoot->left);
+		if (subRoot->list == "system admin")
+		{
+			cout << subRoot->value << endl;
+		}
+		displaySystemAdmins(subRoot->right);
+	}
 }
 
 template <class T>
 void AVLtree<T>::displayOfficials(Node<T>* subRoot)
 {
-
+	if (subRoot)
+	{
+		displayOfficials(subRoot->left);
+		if (subRoot->list == "official")
+		{
+			cout << subRoot->value << endl;
+		}
+		displayOfficials(subRoot->right);
+	}
 }
 
 template <class T>
 void AVLtree<T>::displayMembers(Node<T>* subRoot)
 {
-
+	if (subRoot)
+	{
+		displayMembers(subRoot->left);
+		if (subRoot->list == "member")
+		{
+			cout << subRoot->value << endl;
+		}
+		displayMembers(subRoot->right);
+	}
 }
 
 template <class T>
 void AVLtree<T>::displayItems(Node<T>* subRoot)
 {
-
+	if (subRoot)
+	{
+		displayItems(subRoot->left);
+		cout << "Key: " << subRoot->value << " Value: ";
+		for (int i = 0; i < subRoot->list.size(); i++)
+		{
+			cout << subRoot->list[i] << endl;
+		}
+		displayItems(subRoot->right);
+	}
 }
 
 template <class T>
