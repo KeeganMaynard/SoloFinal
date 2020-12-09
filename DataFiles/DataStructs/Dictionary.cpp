@@ -103,10 +103,10 @@ void accountDict::del(string keyID)
 
 void accountDict::update(string keyID, string newData)
 {
-	//get the location of the keyID in the linked list
-	//assign variables to store the value of the old entry and the new entry
-	//remove the old entry
-	//append the new entry
+	int index = Encryption::index(keyID, maximum);
+	dictEntry oldData(keyID), newInfo(key, newData);
+	dictionary[index].del(oldData);
+	dictionary[index].append(newInfo);
 }
 
 void accountDict::display()
