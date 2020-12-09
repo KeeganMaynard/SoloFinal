@@ -53,5 +53,6 @@ public:
 	void newAccount(string userID, string acntType);
 };
 
-//fill the files with the user information
+memberData Controller::allFiles = memberData();
+vector<AccountVersion> Controller::accountVersionList = {};
 #endif
